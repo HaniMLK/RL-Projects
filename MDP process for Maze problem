@@ -1,0 +1,39 @@
+import gym
+import numpy as np
+from IPython import display
+from matplotlib import pyplot as plt
+
+from envs import Maze
+% matplotlib inline
+
+env=maze()
+state=env.reset()
+action_probabilities = random_policy(state) 
+objects = ('Up', 'Right', 'Down', 'Left')
+y_pos = np.arange(len(objects))
+
+plt.bar(y_pos, action_probabilities, alpha=0.5)
+plt.xticks(y_pos, objects) 
+plt.ylabel('P(a|s)')
+plt.title('Random Policy')
+plt.tight_layout()
+
+plt.show()
+
+def test_agent(environment, policy):
+    frames = []
+    state = env.reset()
+    done = False
+    frames.append(env.render(mode="rgb_array")) 
+
+    while not done:
+        action_probs = policy(state)
+        action = np.random.choice(range(4), 1, p=action_probs)
+        next_state, reward, done, extra_info = env.step(action)
+        img = env.render(mode="rgb_array")
+        frames.append(img)
+        state = next_state
+
+    return display_video(frames)
+
+test_agent(env, random_policy)
