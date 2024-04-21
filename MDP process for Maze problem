@@ -2,12 +2,13 @@ import gym
 import numpy as np
 from IPython import display
 from matplotlib import pyplot as plt
+# % matplotlib inline
 
-from envs import Maze
-% matplotlib inline
+env = Maze() #create the environment
+state = env.reset() #initate the first state
+def random_policy(state): # define policy function that chooses actions randomly
+  return np.array([0.25] * 4)
 
-env=maze()
-state=env.reset()
 action_probabilities = random_policy(state) 
 objects = ('Up', 'Right', 'Down', 'Left')
 y_pos = np.arange(len(objects))
@@ -24,7 +25,7 @@ def test_agent(environment, policy):
     frames = []
     state = env.reset()
     done = False
-    frames.append(env.render(mode="rgb_array")) 
+    frames.append(env.render(mode="rgb_array")) # screenshot of every state
 
     while not done:
         action_probs = policy(state)
@@ -34,6 +35,6 @@ def test_agent(environment, policy):
         frames.append(img)
         state = next_state
 
-    return display_video(frames)
+    return display_video(frames) # turn secreenshots into a video
 
 test_agent(env, random_policy)
