@@ -1,4 +1,4 @@
-Double Gyre flow navigation using Reinforcement Learning algorithms
+**Double Gyre flow navigation using Reinforcement Learning algorithms**
 The Double Gyre is Time-Dependent
 The flow oscillates left–right periodically.
 If the agent is trained with a fixed or narrow range of time phases, its learned policy becomes phase-dependent.
