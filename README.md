@@ -1,4 +1,4 @@
-🧭***_SSSSSSSSSS_new_reward.ipynb Readme file_***🧭
+🧭***SSSSSSSSSS_new_reward.ipynb Readme file**🧭
 
 **Double Gyre flow navigation using Reinforcement Learning algorithms**
 
